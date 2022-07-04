@@ -1,0 +1,430 @@
+<html>
+
+<head>
+  <title>Booking</title>
+  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/cde2ae46d6.js" crossorigin="anonymous"></script>
+</head>
+
+<body id="body">
+  <nav class="navbar navbar-expand-lg navbar-light   fixed-top">
+    <a class="navbar-brand" href="#">Booking</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Book">Book Now</a>
+        </li>
+      </ul>
+      <div class="nav-item dropdown" id="usernameWelcome">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Welcome <b id="username"></b>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/account.html">Account</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/account.html#transactions">Transaction Details</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" id="walletBalance"></a>
+          <div class="dropdown-divider"></div>
+          <input type="submit" id='btnSignOut' class="dropdown-item" value="Signout" />
+        </div>
+      </div>
+    </div>
+  </nav>
+  <br><br><br>
+  <h2 style="text-align: center">MANLESS BUS TICKET MANAGEMENT SYSTEM</h2><br><br><br>
+  <div class="card" style="align-items: center; border-top: none;">
+    <h5>Ticket History</h5>
+    <ol class="list-group list-group-numbered" style="width:70%">
+      <li id="ticketList"></li>
+    </ol>
+  </div>
+
+  <br><br>
+
+  <div class="card" style="align-items: center; border-top: none;" id="#Book">
+    <h5>Book New Ticket</h5>
+    <ol class="list-group list-group-numbered" style="width:70%">
+      <li id="ticketList"></li>
+    </ol>
+    <div id="form-group">
+      Email
+      <input class="form-control" type="text" readonly id="email-form">
+    </div>
+    <div id="form-group">
+      Select the source
+      <select class="input-group" id="formSource">
+        <option value="0">From</option>
+        <option value="2">Puthencruz</option>
+        <option value="4">Kadamattom</option>
+        <option value="6">Mekkadambu</option>
+        <option value="8">Muvattupuzha</option>
+        <option value="10">Thodupuzha</option>
+      </select>
+    </div>
+    <div id="form-group">
+      Select the Destination
+      <select class="input-group" id="formDestination">
+        <option value="0">To</option>
+        <option value="2">Puthencruz</option>
+        <option value="4">Kadamattom</option>
+        <option value="6">Mekkadambu</option>
+        <option value="8">Muvattupuzha</option>
+        <option value="10">Thodupuzha</option>
+      </select>
+    </div>
+    <div id="form-group">
+      Date and Time
+      <input class="form-control" type="datetime-local" id="date-field">
+    </div>
+
+    <div id="form-group">
+      Amount of Ticket
+      <input class="form-control" type="number" id="amount-field" value="1">
+    </div>
+
+    <div id="form-group">
+      Select the Bus
+      <select class="input-group" id="busType">
+        <option value="1">KSRTC</option>
+        <option value="2">KSRTC-LF</option>
+        <option value="3">KSRTC-AC</option>
+        <option value="4">KSRTC-LS</option>
+        <option value="5">KSRTC-FP</option>
+        <option value="6">KSRTC-SUPERFAST</option>
+        <option value="7">KSRTC-TOWN to TOWN</option>
+      </select>
+    </div>
+    <div id="form-group">
+      <input type="submit" class="btn-primary" id="calculate" value="Calculate">
+      <label id="amountCalculated"></label>
+    </div>
+    <div id="form-group">
+      <input type="submit" class="btn-primary" id="book" value="Book Ticket">
+
+    </div>
+    <div id="form-group">
+      <input type="submit" class="btn-primary" id="cancel" value="Cancel">
+
+    </div>
+  </div>
+
+
+
+
+</body>
+
+
+<script type="module">
+
+
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
+  import { getDatabase, set, ref, update, onValue } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
+
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCWiW32lafGna4ANrhma-9E4Ck8ZH07fa8",
+    authDomain: "manless-bus-ticket-system.firebaseapp.com",
+    databaseURL: "https://manless-bus-ticket-system-default-rtdb.firebaseio.com",
+    projectId: "manless-bus-ticket-system",
+    storageBucket: "manless-bus-ticket-system.appspot.com",
+    messagingSenderId: "943986302767",
+    appId: "1:943986302767:web:da972a6c1ee19028c38bda"
+  };
+
+  document.getElementById("book").style = "display:none"
+  document.getElementById("cancel").style = "display:none"
+
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+  var yyyy = today.getFullYear();
+  var hour = today.getHours();
+  var min = today.getMinutes();
+  var sec = today.getSeconds();
+  var ms = today.getMilliseconds();
+  if (dd < 10) {
+    dd = '0' + dd
+  }
+  if (mm < 10) {
+    mm = '0' + mm
+  }
+
+  today = yyyy + '-' + mm + '-' + dd + "T" + hour + ":" + min + ":" + sec + "." + ms;
+
+  document.getElementById("date-field").setAttribute("min", today);
+
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+  const auth = getAuth();
+  const userid = localStorage.getItem('user')
+  var dbData;
+  onAuthStateChanged(auth, (user) => {
+    if (user != null) {
+      const dbValue = ref(database, 'users/' + userid);
+      const tempDbValue = ref(database, 'temptrans/' + userid);
+      onValue(tempDbValue, (snapshot) => {
+        dbData = snapshot.val();
+        if (dbData != null) {
+          var tempIds = Object.keys(dbData);
+          var length = tempIds.length;
+          var id = Math.random()
+          var idString = id.toString().split('.')[1]
+          for (var i = 0; i < length; i++) {
+
+            var tempData = 
+            {
+              type: 'expense',
+              amount: dbData[tempIds[i]].amount,
+              date: dbData[tempIds[i]].date, 
+              time: dbData[tempIds[i]].time
+            }
+            update(ref(database, 'users/' + userid + '/transactions/' + idString),
+            {
+              type: 'expense',
+               amount: dbData[tempIds[i]].amount,
+                date: dbData[tempIds[i]].date, 
+                time: dbData[tempIds[i]].time
+            });
+
+            set(ref(database, 'temptrans/' + userid + '/' + tempIds[i]),
+            {}
+            );
+            
+          }
+        }
+      });
+
+      
+
+      onValue(dbValue, (snapshot) => {
+        const data = snapshot.val()
+        if (data['tickets'] == null) {
+          const item = document.createElement("li")
+          document.getElementById("ticketList").innerHTML = "No Tickets to Display"
+
+        }
+        else {
+          var ticketIds = Object.keys(data.tickets);
+          var length = ticketIds.length;
+          var tickets = data.tickets
+          for (var i = length - 1; i >= 0; i--) {
+            const item = document.createElement("li")
+            item.innerHTML = `
+                    <li class="list-group-item d-flex justify-content-between align-items-start" id="txnlist"> 
+                         <div class="ms-2 me-auto">  
+                            <div class="fw-bold">${length - i} : ${tickets[ticketIds[i]].source} to ${tickets[ticketIds[i]].destination} &nbsp; &nbsp; ${tickets[ticketIds[i]].busType}</div>
+                            <br> 
+                            ${tickets[ticketIds[i]].date + "  " + tickets[ticketIds[i]].time.split('.')[0]} 
+                            <br><br>
+                            Ticket Number : 
+                            <b> ${tickets[ticketIds[i]].ticketNumber} </b> 
+                            <br>
+                            <b>Amount : Rs.  ${tickets[ticketIds[i]].amount}
+                            <p>Status :<b style="${tickets[ticketIds[i]].status == "pending" ? 'color : red' : 'color:green'}"> ${tickets[ticketIds[i]].status}</b></p>
+                         </div>
+                        <span class="badge" id="incomeExpenseText"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${tickets[ticketIds[i]].qrcode}"></span> 
+                    </li>`
+            document.getElementById("ticketList").append(item)
+          }
+        }
+
+
+        document.getElementById("username").innerHTML = data.username
+        document.getElementById("email-form").value = data.email
+        document.getElementById("walletBalance").innerHTML = "Wallet Balance :" + '<i class="fa-solid fa-indian-rupee-sign">' + " " + data.walletBalance
+      });
+
+    }
+  });
+
+  var amt = 0;
+
+  calculate.addEventListener('click', (e) => {
+    var source = document.getElementById('formSource').value;
+    var dest = document.getElementById('formDestination').value;
+
+    if (source == 0 || dest == 0) {
+      alert("Please Select Source and Destination")
+      return
+    }
+
+    var distance = Math.abs(source - dest) * 5
+    var amount = 8 + (distance - 1) * 0.75
+    var ticketNumber = document.getElementById('amount-field').value;
+    var busType = parseInt(document.getElementById('busType').value);
+    switch (busType) {
+      case 1:
+        amount = amount * 1;
+        break;
+      case 2:
+        amount = amount * 1.05;
+        break;
+      case 3:
+        amount = amount * 1.10;
+        break;
+      case 4:
+        amount = amount * 1.15;
+        break;
+      case 5:
+        amount = amount * 1.20;
+        break;
+      case 6:
+        amount = amount * 1.25;
+        break;
+      case 7:
+        amount = amount * 1.30;
+        break;
+    }
+
+    amount = Math.round(amount * ticketNumber);
+    amt = amount;
+    document.getElementById("amountCalculated").innerHTML = '<i class="fa-solid fa-indian-rupee-sign">' + " " + amount;
+    document.getElementById("book").style = "display:block"
+    document.getElementById("cancel").style = "display:block"
+
+  });
+
+  book.addEventListener('click', (e) => {
+    var source = parseInt(document.getElementById('formSource').value);
+    var dest = parseInt(document.getElementById('formDestination').value);
+    var busType = parseInt(document.getElementById('busType').value);
+    var date = document.getElementById('date-field').value;
+    var ticketNumber = document.getElementById('amount-field').value;
+
+    var ticketId = Math.random()
+    var ticketIdString = "tk_" + ticketId.toString().split('.')[1]
+    var qrdata = userid.toString() + "++" + ticketIdString + "++" + amt;
+    console.log(qrdata);
+
+    var sourceString = "", destString = "", busTypeString = "";
+
+    switch (source) {
+      case 2:
+        sourceString = "Puthencruz"
+        break;
+      case 4:
+        sourceString = "Kadamattom"
+        break;
+      case 6:
+        sourceString = "Mekkadambu"
+        break;
+      case 8:
+        sourceString = "Muvattupuzha"
+        break;
+      case 10:
+        sourceString = "Thodupuzha"
+        break;
+    }
+    switch (dest) {
+      case 2:
+        destString = "Puthencruz"
+        break;
+      case 4:
+        destString = "Kadamattom"
+        break;
+      case 6:
+        destString = "Mekkadambu"
+        break;
+      case 8:
+        destString = "Muvattupuzha"
+        break;
+      case 10:
+        destString = "Thodupuzha"
+        break;
+    }
+    switch (busType) {
+      case 1:
+        busTypeString = "KSRTC"
+        break;
+      case 2:
+        busTypeString = "KSRTC-LF"
+        break;
+      case 3:
+        busTypeString = "KSRTC-AC"
+        break;
+      case 4:
+        busTypeString = "KSRTC-LS"
+        break;
+      case 5:
+        busTypeString = "KSRTC-FP"
+        break;
+      case 6:
+        busTypeString = "KSRTC-SUPERFAST"
+        break;
+      case 7:
+        busTypeString = "KSRTC-TOWN to TOWN"
+        break;
+    }
+
+    if (date == "") {
+      alert("Please Select the date")
+      return
+    }
+
+    var ticketDate = date.split('T')[0];
+    var ticketTime = date.split('T')[1];
+    set(ref(database, 'users/' + userid + "/tickets/" + ticketIdString),
+      {
+        id: ticketIdString,
+        source: sourceString,
+        destination: destString,
+        date: ticketDate,
+        time: ticketTime,
+        busType: busTypeString,
+        ticketNumber: ticketNumber,
+        qrcode: qrdata,
+        amount: amt,
+        status: "pending"
+      });
+    setTimeout(function () {
+      alert("Booking Successfull Please check the main page for qrcode");
+    }, 500);
+    setTimeout(function () {
+      window.location.href = '/index.html';
+    }, 1000);
+
+  });
+
+  cancel.addEventListener('click', (e) => {
+    window.location.reload();
+  });
+
+  btnSignOut.addEventListener('click', (e) => {
+    auth.signOut().then(function () {
+      localStorage.setItem("user", null);
+      setTimeout(function () {
+        window.location.href = "/index.html#booking";
+      }, 1000);
+    }).catch(function (error) {
+      alert(error.message)
+    })
+  });
+</script>
+</html>

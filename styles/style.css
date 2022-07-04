@@ -1,0 +1,124 @@
+/* body
+{
+    background-image: url('assets/images/ironman.png') !important;
+} */
+
+/* a
+{
+    color: white !important;
+} */
+
+#body
+{
+    background-color: rgb(199, 248, 248) !important;
+}
+
+*
+{
+    background-color: rgb(199, 248, 248) !important;
+}
+
+#emailField,#passwordField
+{
+    background-color: white ;
+}
+
+.fa-user
+{
+    background-color: rgba(128, 128, 128, 0) !important;
+}
+
+.btn-primary {
+    background-color: #007bff !important;
+}
+
+#usernameWelcome {
+    align-self: flex-end;
+    margin-right: 50px;
+    text-decoration: none;
+}
+
+div a {
+    color: black;
+    text-decoration: none;
+}
+
+div a:hover {
+    color: grey !important;
+}
+
+#user {
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(128, 128, 128, 0.358) !important;
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#accountTitle {
+    text-align: center;
+    font-size: 48;
+}
+
+#accountEmail {
+    text-align: center;
+    font-size: 20;
+}
+
+#email {
+    width: 500px;
+}
+
+.card-body {
+    padding: 10px;
+}
+
+#btnPayment {
+    width: 100%;
+}
+
+ol li {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+#txnlist {
+    margin: 10px;
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: rgb(199, 248, 248) ;
+}
+
+#incomeExpenseText {
+    font-size: 20;
+}
+
+.input-group
+{
+    margin-top: 5px;
+    width: 200px !important;
+}
+
+#form-group
+{
+    padding-top: 10px;
+}
+
+#email-form
+{
+    width: 200px;
+}
+#date-field
+{
+    width: 200px;
+}
+#amountCalculated
+{
+    margin-left: 10px;
+    font-size: 20px;
+}
